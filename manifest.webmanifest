@@ -4,6 +4,7 @@
   "short_name": "QR Studio",
   "description": "Tạo, lưu và quét mã QR hoặc Barcode ngay trên thiết bị.",
   "lang": "vi",
+  "id": "./",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
@@ -27,7 +28,7 @@
       "src": "./icons/app-icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     }
   ]
 }

@@ -47,6 +47,7 @@ Then open [http://localhost:8000](http://localhost:8000). The QR, barcode, and s
 - The scanner can be started and stopped by the user, or can read a selected image; detected links are shown for review before opening.
 - The only built-in logo choices are Wi-Fi and Website / URL; uploaded personal logos remain available for reuse and can be deleted.
 - The app can be installed as a PWA and caches its pages, styles, scripts, icons, and libraries for offline use after they have been loaded once.
+- On Android, install it with the browser's install prompt. On iPhone or iPad, open the site in Safari, tap Share, then choose “Add to Home Screen”; the install button shows these steps.
 - Light is the default website theme; the selected light or dark theme is saved in browser storage.
 
 Test a customized QR with a phone before printing or distributing it, especially when using a logo or decorative shapes.
