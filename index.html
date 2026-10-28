@@ -1,0 +1,360 @@
+﻿<!doctype html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f3f6fa">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="QR Studio">
+  <title>QR Studio — Tạo mã QR miễn phí</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/app-icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/app-icon-192.png">
+  <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode_UTF8.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Bỏ qua đến nội dung chính</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#" aria-label="QR Studio, về đầu trang">
+        <img class="brand-mark" src="icons/app-icon.svg" alt="" aria-hidden="true">
+        <span>
+          <span class="brand-name">QR Studio</span>
+          <span class="brand-subtitle">Tạo mã nhanh, chia sẻ dễ dàng</span>
+        </span>
+      </a>
+      <nav class="site-nav" aria-label="Điều hướng chính">
+        <a href="index.html" aria-current="page">Tạo mã</a>
+        <a href="library.html">Thư viện</a>
+        <a href="scan.html">Quét mã</a>
+      </nav>
+      <button class="install-button" id="install-app-button" type="button" hidden>Cài đặt ứng dụng</button>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Chuyển sang giao diện sáng" title="Chuyển giao diện">☀️</button>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="intro" aria-labelledby="page-title">
+      <p class="eyebrow">Công cụ miễn phí · Xử lý ngay trên thiết bị</p>
+      <h1 id="page-title">Một mã QR.<br>Vô vàn cách chia sẻ.</h1>
+      <p class="intro-copy">Tạo QR hoặc Barcode từ nhiều loại nội dung, tùy chỉnh màu sắc và kiểu dáng, rồi tải xuống hoặc chia sẻ theo cách bạn muốn.</p>
+    </section>
+
+    <div class="workspace">
+      <section class="panel" aria-labelledby="input-heading">
+        <div class="panel-heading">
+          <div class="panel-title-wrap">
+            <h2 id="input-heading">Nội dung mã hóa</h2>
+          </div>
+        </div>
+        <form class="form-content" id="qr-form" novalidate>
+          <section class="form-section" aria-labelledby="type-heading">
+            <div class="section-heading">
+              <span class="step" aria-hidden="true">01</span>
+              <h3 id="type-heading">Chọn loại nội dung mã QR / Barcode</h3>
+            </div>
+            <div class="type-options" role="group" aria-label="Loại nội dung cần mã hóa">
+              <button class="type-option" type="button" data-code-type="url" aria-pressed="false"><svg class="option-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13.5 8.5 15a4 4 0 0 1-5.7-5.7l4-4a4 4 0 0 1 5.7 0M14 10.5l1.5-1.5a4 4 0 0 1 5.7 5.7l-4 4a4 4 0 0 1-5.7 0M8.5 12h7"/></svg><strong>Website / URL</strong><span>Liên kết trang web</span></button>
+              <button class="type-option" type="button" data-code-type="vietqr" aria-pressed="false"><svg class="option-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h16M6 20V9l6-5 6 5v11M9 20v-6h6v6M4 10h16"/></svg><strong>VietQR Bank</strong><span>Thanh toán chuyển khoản</span></button>
+              <button class="type-option" type="button" data-code-type="wifi" aria-pressed="false"><svg class="option-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9a14 14 0 0 1 18 0M6.5 12.5a9 9 0 0 1 11 0M10 16a4 4 0 0 1 4 0M12 20h.01"/></svg><strong>Wi‑Fi</strong><span>Kết nối mạng nhanh</span></button>
+              <button class="type-option" type="button" data-code-type="vcard" aria-pressed="false"><svg class="option-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v14H4zM8 10a2 2 0 1 0 4 0 2 2 0 0 0-4 0ZM7 16a3 3 0 0 1 6 0M15 9h3M15 13h3"/></svg><strong>Danh thiếp</strong><span>vCard liên hệ</span></button>
+              <button class="type-option" type="button" data-code-type="cccd" aria-pressed="false"><svg class="option-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8" cy="11" r="2"/><path d="M5.5 16a3 3 0 0 1 5 0M13 10h5M13 14h5"/></svg><strong>CCCD Việt Nam</strong><span>Chuỗi dữ liệu 7 trường</span></button>
+              <button class="type-option" type="button" data-code-type="app" aria-pressed="false"><svg class="option-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="3" width="12" height="18" rx="2"/><path d="M10 6h4M11 18h2"/></svg><strong>Ứng dụng</strong><span>App Store / Google Play</span></button>
+              <button class="type-option" type="button" data-code-type="barcode" aria-pressed="false"><svg class="option-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5v14M7 5v14M10 5v14M14 5v14M16 5v14M20 5v14M3 20h18"/></svg><strong>Barcode</strong><span>Code 128, EAN, UPC, Code 39</span></button>
+              <button class="type-option" type="button" data-code-type="feedback" aria-pressed="false"><svg class="option-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-3-5.6 3 1.1-6.2L3 9.6l6.2-.9z"/></svg><strong>Đánh giá</strong><span>Google review / góp ý</span></button>
+              <button class="type-option" type="button" data-code-type="menu" aria-pressed="false"><svg class="option-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg><strong>Menu nhà hàng</strong><span>Menu trực tuyến / món ăn</span></button>
+              <button class="type-option" type="button" data-code-type="text" aria-pressed="true"><svg class="option-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14v16H5zM8 8h8M8 12h8M8 16h5"/></svg><strong>Văn bản</strong><span>Đoạn text, thông điệp</span></button>
+              <button class="type-option" type="button" data-code-type="event" aria-pressed="false"><svg class="option-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 6h14v14H5zM8 4v4M16 4v4M5 10h14M8 13h3M8 16h5"/></svg><strong>Sự kiện</strong><span>Lịch vEvent</span></button>
+              <button class="type-option" type="button" data-code-type="social" aria-pressed="false"><svg class="option-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="7" cy="12" r="3"/><circle cx="17" cy="6" r="3"/><circle cx="17" cy="18" r="3"/><path d="m9.5 10.5 5-3M9.5 13.5l5 3"/></svg><strong>Social Bio</strong><span>Liên kết mạng xã hội</span></button>
+              <button class="type-option" type="button" data-code-type="pdf" aria-pressed="false"><svg class="option-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l5 5v13H6zM14 3v6h5M9 14h2a1.5 1.5 0 0 0 0-3H9v6M14 11h2a2 2 0 0 1 0 6h-2z"/></svg><strong>Tài liệu PDF</strong><span>Tài liệu trực tuyến</span></button>
+              <button class="type-option" type="button" data-code-type="image" aria-pressed="false"><svg class="option-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9" r="1.5"/><path d="m4 17 5-5 4 4 3-3 4 4"/></svg><strong>Album ảnh</strong><span>Thư viện hình ảnh</span></button>
+              <button class="type-option" type="button" data-code-type="mp3" aria-pressed="false"><svg class="option-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18V5l11-2v13M9 8l11-2"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></svg><strong>Âm nhạc</strong><span>MP3 / Spotify / Zing</span></button>
+              <button class="type-option" type="button" data-code-type="playlist" aria-pressed="false"><svg class="option-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="4"/><path d="m10 9 5 3-5 3z"/></svg><strong>Playlist video</strong><span>YouTube / TikTok</span></button>
+              <button class="type-option" type="button" data-code-type="coupon" aria-pressed="false"><svg class="option-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7a2 2 0 0 0 0 4v2a2 2 0 0 0 0 4h16v-4a2 2 0 0 1 0-4V5H4zM9 8v1M9 15v1M9 11v2"/></svg><strong>Mã giảm giá</strong><span>Voucher / ưu đãi</span></button>
+              <button class="type-option" type="button" data-code-type="product" aria-pressed="false"><svg class="option-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 9 5v8l-9 5-9-5V8zM3.5 8 12 13l8.5-5M12 13v8M7.5 5.5 16 10.5"/></svg><strong>Sản phẩm</strong><span>Mô tả, giá, liên kết</span></button>
+              <button class="type-option" type="button" data-code-type="landing" aria-pressed="false"><svg class="option-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m3 11 9-8 9 8M5 10v10h14V10M9 20v-6h6v6"/></svg><strong>Landing page</strong><span>Trang giới thiệu</span></button>
+            </div>
+            <div class="barcode-settings" id="barcode-settings" hidden>
+              <div>
+                <label class="setting-label" for="barcode-format">Định dạng mã vạch</label>
+                <div class="select-wrap">
+                  <select id="barcode-format" name="barcode-format">
+                    <option value="CODE128">Code 128 — nội dung linh hoạt</option>
+                    <option value="EAN13">EAN-13 — mã hàng hóa 13 số</option>
+                    <option value="UPC">UPC-A — mã hàng hóa 12 số</option>
+                    <option value="CODE39">Code 39 — chữ và số</option>
+                  </select>
+                </div>
+              </div>
+              <p class="resolution-note">EAN-13 và UPC-A yêu cầu đúng số lượng chữ số theo chuẩn.</p>
+            </div>
+          </section>
+
+          <section class="form-section" aria-labelledby="payload-heading">
+            <div class="section-heading">
+              <span class="step" aria-hidden="true">02</span>
+              <h3 id="payload-heading">Nhập thông tin chi tiết</h3>
+            </div>
+            <div class="dynamic-fields" id="dynamic-fields"></div>
+            <div class="field-meta">
+              <span class="field-hint" id="content-hint">Nội dung sẽ được mã hóa trực tiếp vào QR.</span>
+              <span class="counter" id="content-count">0 ký tự</span>
+            </div>
+          </section>
+
+          <section class="form-section" aria-labelledby="appearance-heading">
+            <div class="section-heading">
+              <span class="step" aria-hidden="true">03</span>
+              <h3 id="appearance-heading">Tùy chỉnh kiểu dáng & màu sắc</h3>
+            </div>
+            <div class="appearance-options">
+              <div id="qr-shape-options" class="wide appearance-options">
+                <div class="wide">
+                  <span class="setting-label" id="design-choice-label">Chọn nhanh phong cách</span>
+                  <div id="design-choices" class="theme-choices" role="group" aria-labelledby="design-choice-label">
+                    <button class="theme-choice" type="button" data-design-style="vietnam" aria-pressed="true">
+                      <span class="theme-swatch" style="--swatch-start:#9D1C2A;--swatch-end:#8E5B00" aria-hidden="true"></span>
+                      <span>Việt Nam</span>
+                    </button>
+                    <button class="theme-choice" type="button" data-design-style="classic" aria-pressed="false">
+                      <span class="theme-swatch" style="--swatch-start:#171717;--swatch-end:#4B5563" aria-hidden="true"></span>
+                      <span>Cổ Điển</span>
+                    </button>
+                    <button class="theme-choice" type="button" data-design-style="jade" aria-pressed="false">
+                      <span class="theme-swatch" style="--swatch-start:#064E3B;--swatch-end:#0F766E" aria-hidden="true"></span>
+                      <span>Ngọc Bích</span>
+                    </button>
+                    <button class="theme-choice" type="button" data-design-style="sea" aria-pressed="false">
+                      <span class="theme-swatch" style="--swatch-start:#083F68;--swatch-end:#076B78" aria-hidden="true"></span>
+                      <span>Biển Xanh</span>
+                    </button>
+                    <button class="theme-choice" type="button" data-design-style="sunset" aria-pressed="false">
+                      <span class="theme-swatch" style="--swatch-start:#7F1D3D;--swatch-end:#B93832" aria-hidden="true"></span>
+                      <span>Hoàng Hôn</span>
+                    </button>
+                    <button class="theme-choice" type="button" data-design-style="cyberpunk" aria-pressed="false">
+                      <span class="theme-swatch" style="--swatch-start:#E879F9;--swatch-end:#22D3EE" aria-hidden="true"></span>
+                      <span>Cyberpunk</span>
+                    </button>
+                    <button class="theme-choice theme-choice-custom" type="button" data-design-style="custom" aria-pressed="false">
+                      <span class="theme-swatch" aria-hidden="true"></span>
+                      <span>Tùy chỉnh</span>
+                    </button>
+                  </div>
+                  <p class="resolution-note" id="design-description" aria-live="polite"></p>
+                </div>
+                <div id="advanced-style-controls" class="advanced-style-controls" hidden>
+                  <div>
+                    <label class="setting-label" for="qr-pattern">Kiểu họa tiết QR</label>
+                    <div class="select-wrap"><select id="qr-pattern" name="pattern"></select></div>
+                    <div class="style-sample" id="pattern-sample" aria-live="polite"></div>
+                  </div>
+                  <div>
+                    <label class="setting-label" for="qr-eyes">Kiểu viền mắt định vị ngoài</label>
+                    <div class="select-wrap"><select id="qr-eyes" name="eyes"></select></div>
+                    <div class="style-sample" id="eye-sample" aria-live="polite"></div>
+                  </div>
+                  <div>
+                    <label class="setting-label" for="qr-eye-center">Kiểu tâm mắt định vị</label>
+                    <div class="select-wrap"><select id="qr-eye-center" name="eye-center"></select></div>
+                    <div class="style-sample" id="eye-center-sample" aria-live="polite"></div>
+                  </div>
+                  <div class="gradient-preview-wrap wide">
+                    <span class="gradient-preview-label">Xem trước màu chuyển sắc trên mã</span>
+                    <div id="gradient-preview" class="gradient-preview" role="img" aria-label="Xem trước màu chuyển sắc"></div>
+                  </div>
+                  <label class="check-control wide" id="gradient-toggle-control" for="qr-use-gradient">
+                    <input id="qr-use-gradient" type="checkbox">
+                    Dùng màu chuyển sắc cho họa tiết QR
+                  </label>
+                  <div id="gradient-type-control" hidden>
+                    <label class="setting-label" for="qr-gradient-type">Kiểu chuyển sắc</label>
+                    <div class="select-wrap">
+                      <select id="qr-gradient-type" name="gradient-type">
+                        <option value="linear">Tuyến tính (chéo)</option>
+                        <option value="radial">Tỏa tròn từ tâm</option>
+                      </select>
+                    </div>
+                  </div>
+                  <p class="contrast-note wide">Giữ tương phản ít nhất 4.5:1. Họa tiết trang trí và logo có thể ảnh hưởng khả năng quét; hãy thử bằng điện thoại trước khi in hoặc phát hành.</p>
+                </div>
+                <div class="wide">
+                  <div class="logo-library-picker" id="logo-picker">
+                    <label class="logo-library-heading setting-label" for="qr-logo">Logo tùy chỉnh</label>
+                    <input class="logo-input" id="qr-logo" type="file" accept="image/png,image/jpeg,image/webp,image/svg+xml">
+                    <p class="resolution-note" id="logo-note">Logo được xử lý trong trình duyệt; logo tải lên sẽ tự lưu trong thư viện trên thiết bị.</p>
+                    <div id="logo-presets" class="logo-presets" aria-label="Chọn logo"></div>
+                    <button class="small-button clear-logo-button" id="clear-logo-button" type="button">Bỏ logo khỏi mã</button>
+                  </div>
+                </div>
+                <div id="logo-options" class="wide settings" hidden>
+                  <div>
+                    <label class="setting-label" for="qr-logo-size">Kích thước logo (%)</label>
+                    <input class="number-input" id="qr-logo-size" type="number" step="1" value="17">
+                  </div>
+                  <div>
+                    <label class="setting-label" for="qr-logo-margin">Khoảng lề quanh logo (%)</label>
+                    <input class="number-input" id="qr-logo-margin" type="number" step="1" value="5">
+                  </div>
+                </div>
+              </div>
+              <div id="qr-code-color-controls" class="wide color-pair">
+                <div>
+                  <label class="setting-label" id="dark-color-label" for="qr-dark">Màu mã QR</label>
+                  <div class="color-setting">
+                    <input id="qr-dark" type="color" value="#152235" aria-label="Chọn màu mã QR">
+                    <span class="color-value" id="qr-dark-value">#152235</span>
+                  </div>
+                </div>
+                <div id="gradient-color-control" hidden>
+                  <label class="setting-label" for="qr-gradient-end">Màu kết thúc chuyển sắc</label>
+                  <div class="color-setting">
+                    <input id="qr-gradient-end" type="color" value="#087485" aria-label="Chọn màu kết thúc chuyển sắc">
+                    <span class="color-value" id="qr-gradient-value">#087485</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="form-section" aria-labelledby="decoration-heading">
+            <div class="section-heading">
+              <span class="step" aria-hidden="true">04</span>
+              <h3 id="decoration-heading">Chữ phía trên & dưới mã</h3>
+            </div>
+            <div class="appearance-options">
+              <div>
+                <label class="setting-label" for="caption-color">Màu chữ trang trí</label>
+                <div class="color-setting">
+                  <input id="caption-color" type="color" value="#152235" aria-label="Chọn màu chữ trang trí">
+                  <span class="color-value" id="caption-color-value">#152235</span>
+                </div>
+              </div>
+              <div>
+                <label class="setting-label" for="caption-font-size">Cỡ chữ (px)</label>
+                <input class="number-input" id="caption-font-size" type="number" step="1" value="28">
+              </div>
+              <div>
+                <label class="setting-label" for="caption-font-family">Kiểu chữ</label>
+                <div class="select-wrap">
+                  <select id="caption-font-family" name="caption-font-family">
+                    <option value="Arial, sans-serif">Hiện đại (Arial)</option>
+                    <option value="Georgia, serif">Cổ điển (Georgia)</option>
+                    <option value="Trebuchet MS, sans-serif">Thân thiện (Trebuchet MS)</option>
+                    <option value="monospace">Kỹ thuật (Monospace)</option>
+                  </select>
+                </div>
+              </div>
+              <div class="wide">
+                <label class="setting-label" for="top-caption">Chữ phía trên (tối đa 60 ký tự)</label>
+                <input class="text-input" id="top-caption" type="text" maxlength="60" placeholder="Ví dụ: Quét mã để xem thêm">
+              </div>
+              <div class="wide">
+                <label class="setting-label" for="bottom-caption">Chữ phía dưới (tối đa 60 ký tự)</label>
+                <input class="text-input" id="bottom-caption" type="text" maxlength="60" placeholder="Ví dụ: Cảm ơn bạn!">
+              </div>
+            </div>
+            <p class="resolution-note">Chữ trang trí được gộp vào ảnh xem trước, tệp tải xuống và bản in.</p>
+          </section>
+
+          <section class="form-section" aria-labelledby="resolution-heading">
+            <div class="section-heading">
+              <span class="step" aria-hidden="true">05</span>
+              <h3 id="resolution-heading">Kích thước xuất file & độ phân giải</h3>
+            </div>
+            <label class="setting-label" for="qr-size">Độ phân giải ảnh</label>
+            <div class="select-wrap">
+              <select id="qr-size" name="size">
+                <option value="512">512 × 512 px — Web / ứng dụng</option>
+                <option value="1024" selected>1024 × 1024 px — HD</option>
+                <option value="2048">2048 × 2048 px — 2K</option>
+                <option value="2480">2480 × 2480 px — In 300 DPI, rộng A4</option>
+                <option value="4096">4096 × 4096 px — 4K</option>
+                <option value="custom">Tùy chỉnh kích thước…</option>
+              </select>
+            </div>
+            <div class="custom-size" id="custom-size-control" hidden>
+              <label class="setting-label" for="custom-size">Kích thước cạnh (px)</label>
+            <input class="number-input" id="custom-size" type="number" min="128" max="4096" step="1" value="1024" inputmode="numeric">
+            <p class="resolution-note">QR dùng kích thước vuông; Barcode dùng giá trị này làm chiều rộng và tự cân đối chiều cao. Nhập từ 128 đến 4096 px.</p>
+            </div>
+            <p class="resolution-note" id="resolution-note">Kích thước đã chọn áp dụng cho cả bản xem trước và ảnh tải xuống.</p>
+          </section>
+
+        </form>
+      </section>
+
+      <section class="panel preview-panel" aria-labelledby="preview-heading">
+        <div class="panel-heading">
+          <div class="panel-title-wrap">
+            <span class="live-dot" aria-hidden="true"></span>
+            <h2 id="preview-heading">Xem trước mã QR</h2>
+          </div>
+          <span class="size-badge" id="size-badge">512 PX</span>
+        </div>
+        <div class="preview-content">
+          <div class="preview-frame">
+            <div class="empty-state" id="empty-state">
+              <span class="empty-mark" aria-hidden="true">QR</span>
+              <strong>Mã QR sẽ xuất hiện tại đây</strong>
+              <p>Nhập nội dung ở bên trái để mã tự động cập nhật tại đây.</p>
+            </div>
+            <div class="qr-output" id="qr-output" hidden>
+              <canvas id="qr-canvas" role="img" aria-label="Mã QR được tạo từ nội dung đã nhập"></canvas>
+              <canvas id="qr-source-canvas" aria-hidden="true" hidden></canvas>
+            </div>
+          </div>
+          <p class="preview-caption" id="preview-caption">Chưa có nội dung được mã hóa.</p>
+          <p class="feedback" id="feedback" role="status" aria-live="polite">Nhập thông tin để xem trước mã tự động.</p>
+          <label class="setting-label" for="export-format">Định dạng tải xuống</label>
+          <div class="select-wrap">
+            <select id="export-format" name="export-format">
+              <option value="png">PNG · ảnh điểm ảnh</option>
+              <option value="svg">SVG · ảnh vector</option>
+              <option value="jpeg">JPEG</option>
+              <option value="webp">WebP</option>
+            </select>
+          </div>
+          <div class="export-background-settings">
+            <label class="setting-label" for="export-background-mode">Nền ảnh tải xuống</label>
+            <div class="select-wrap">
+              <select id="export-background-mode" name="export-background-mode">
+                <option value="solid">Nền đặc (dùng màu bên dưới)</option>
+                <option value="transparent">Nền trong suốt</option>
+              </select>
+            </div>
+            <div id="export-background-color-control">
+              <label class="setting-label" id="light-color-label" for="qr-light">Màu nền QR / ảnh đặc</label>
+              <div class="color-setting">
+                <input id="qr-light" type="color" value="#ffffff" aria-label="Chọn màu nền QR và ảnh nền đặc">
+                <span class="color-value" id="qr-light-value">#ffffff</span>
+              </div>
+            </div>
+            <p class="resolution-note" id="export-background-note">PNG sẽ dùng màu nền đã chọn.</p>
+          </div>
+          <button class="button button-secondary download-button" id="download-button" type="button" disabled>
+            <span id="download-label">Tải xuống PNG</span>
+          </button>
+          <div class="export-actions" aria-label="Thao tác với mã đã tạo">
+            <button class="button button-secondary" id="copy-content-button" type="button" disabled>Sao chép nội dung</button>
+            <button class="button button-secondary" id="copy-image-button" type="button" disabled>Sao chép ảnh</button>
+            <button class="button button-secondary" id="print-button" type="button" disabled>In mã</button>
+            <button class="button button-secondary" id="save-button" type="button" disabled>Lưu lịch sử</button>
+          </div>
+          <a class="library-cta" href="library.html">Mở thư viện mã & logo →</a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">Mã QR được tạo ngay trên trình duyệt của bạn. Nội dung không được gửi lên máy chủ.</div>
+  </footer>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f3f6fa">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="QR Studio">
+  <title>Thư viện — QR Studio</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/app-icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/app-icon-192.png">
+  <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode_UTF8.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Bỏ qua đến nội dung chính</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html" aria-label="QR Studio, về trang tạo mã">
+        <img class="brand-mark" src="icons/app-icon.svg" alt="" aria-hidden="true">
+        <span>
+          <span class="brand-name">QR Studio</span>
+          <span class="brand-subtitle">Tạo mã nhanh, chia sẻ dễ dàng</span>
+        </span>
+      </a>
+      <nav class="site-nav" aria-label="Điều hướng chính">
+        <a href="index.html">Tạo mã</a>
+        <a href="library.html" aria-current="page">Thư viện</a>
+        <a href="scan.html">Quét mã</a>
+      </nav>
+      <button class="install-button" id="install-app-button" type="button" hidden>Cài đặt ứng dụng</button>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Chuyển giao diện">🌙</button>
+    </div>
+  </header>
+  <main id="main-content">
+    <section class="intro" aria-labelledby="page-title">
+      <p class="eyebrow">Lưu trữ trên thiết bị</p>
+      <h1 id="page-title">Thư viện của bạn.</h1>
+      <p class="intro-copy">Quản lý các mã đã lưu và logo cá nhân. Dữ liệu chỉ nằm trong bộ nhớ trình duyệt này.</p>
+    </section>
+    <section class="panel library-page-section" aria-labelledby="saved-codes-heading">
+      <div class="panel-heading library-page-heading">
+        <div class="panel-title-wrap">
+          <h2 id="saved-codes-heading">Mã đã lưu <span id="saved-count"></span></h2>
+        </div>
+        <button class="button button-secondary" id="clear-history-button" type="button">Xóa tất cả mã</button>
+      </div>
+      <p class="feedback library-feedback" id="history-feedback" role="status" aria-live="polite"></p>
+      <div class="saved-code-grid" id="saved-codes"></div>
+    </section>
+    <section class="panel library-page-section" id="logos" aria-labelledby="saved-logos-heading">
+      <div class="panel-heading library-page-heading">
+        <div class="panel-title-wrap">
+          <h2 id="saved-logos-heading">Logo đã lưu <span id="logo-count"></span></h2>
+        </div>
+        <a class="button button-primary library-create-link" href="index.html#logo-picker">Chọn logo trong bộ tạo</a>
+      </div>
+      <p class="resolution-note library-description"></p>
+      <div class="saved-logo-grid" id="saved-logos"></div>
+      <p class="feedback library-feedback" id="logo-feedback" role="status" aria-live="polite"></p>
+    </section>
+  </main>
+  <footer><div class="footer-inner">Lịch sử và logo được lưu trong localStorage của trình duyệt.</div></footer>
+  <script type="module" src="js/library.js"></script>
+</body>
+</html>
